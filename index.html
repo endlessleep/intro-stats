@@ -176,8 +176,186 @@
 
             <div id="chap2" class="page">
                 <h2>Chapter 2: Probability</h2>
-                <div class="glass-panel">
-                    <p>Coming soon...</p>
+                
+                <div class="glass-panel concept-block">
+                    <h3>📊 Sets & Logic</h3>
+                    <div class="split-box">
+                        <div class="sub-box">
+                            <h4>Basic Operations</h4>
+                            <p class="definition"><strong>Union (\( A \cup B \)):</strong> A or B occurs.</p>
+                            <p class="definition"><strong>Intersection (\( A \cap B \)):</strong> A and B occur.</p>
+                        </div>
+                        <div class="sub-box">
+                            <h4>🎯 Logic Connections</h4>
+                            <p><strong>Subset (\( A \subset B \)):</strong> If A happens, B happens.</p>
+                            <ul>
+                                <li>"At least one" &rarr; Union</li>
+                                <li>"All" &rarr; Intersection</li>
+                                <li>"None" &rarr; Complement</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="method-box">
+                        <h4>🎯 De Morgan's Laws</h4>
+                        <p class="formula-inline">\( (A \cup B)^c = A^c \cap B^c \)</p>
+                        <br>
+                        <p class="formula-inline">\( (A \cap B)^c = A^c \cup B^c \)</p>
+                    </div>
+                </div>
+
+                <div class="glass-panel concept-block">
+                    <h3>📊 Core Probability Rules</h3>
+                    <p class="definition"><strong>Classic Probability:</strong> \( P(A) = \frac{N(A)}{N(S)} \) (or \( \frac{\text{favourable}}{\text{total}} \))<br>
+                    <em>Conditions: \( S \) is finite and outcomes are equiprobable.</em></p>
+                    <p class="definition"><strong>Geometric Probability:</strong> \( P(A) = \frac{|A|}{|S|} \) (Area / Volume)</p>
+                    
+                    <div class="method-box">
+                        <h4>Axioms</h4>
+                        <ul>
+                            <li>\( P(A) \ge 0 \)</li>
+                            <li>\( P(S) = 1 \)</li>
+                            <li>Additivity if disjoint.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="split-box">
+                        <div class="sub-box">
+                            <h4>Complement</h4>
+                            <p class="formula-inline">\( P(A^c) = 1 - P(A) \)</p>
+                            <p><em>Use for: "at least one" or "none".</em></p>
+                            <p>\( P(\text{at least one}) = 1 - P(\text{none}) \)</p>
+                            <p>\( P(\text{none}) = P(\bigcap A_i^c) \)</p>
+                        </div>
+                        <div class="sub-box">
+                            <h4>Union (Addition Rule)</h4>
+                            <p class="formula-inline">\( P(A \cup B) = P(A) + P(B) - P(A \cap B) \)</p>
+                            <p><strong>Disjoint:</strong> \( P(A \cup B) = P(A) + P(B) \)</p>
+                            <br>
+                            <p><em>Always check if disjoint! Disjoint &rarr; simple addition. Otherwise &rarr; subtract intersection.</em></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-panel concept-block">
+                    <h3>📊 Advanced Rules</h3>
+                    <div class="split-box">
+                        <div class="sub-box">
+                            <h4>Combinations & Geometry</h4>
+                            <p><strong>Difference (if \( A \subset B \)):</strong> \( P(B \setminus A) = P(B) - P(A) \)</p>
+                            <p><strong>Monotonicity (if \( A \subset B \)):</strong> \( P(A) \le P(B) \)</p>
+                        </div>
+                        <div class="sub-box">
+                            <h4>Useful Inequalities</h4>
+                            <p class="formula-inline">\( P(A \cup B) \le P(A) + P(B) \)</p>
+                            <br>
+                            <p class="formula-inline">\( P(A \cap B) \ge P(A) + P(B) - 1 \)</p>
+                        </div>
+                    </div>
+                    <div class="method-box">
+                        <h4>Discrete Probability</h4>
+                        <p>If \( P(s_i) = p_i \), then \( P(A) = \sum_{s_i \in A} p_i \)</p>
+                    </div>
+                </div>
+
+                <div class="glass-panel concept-block">
+                    <h3>📊 Combinatorics (Counting Rules)</h3>
+                    <div class="svg-container" style="background: transparent; padding: 0; border: none; box-shadow: none;">
+                        <table style="width: 100%; border-collapse: collapse; text-align: left; margin-bottom: 1.5rem;">
+                            <thead>
+                                <tr style="border-bottom: 2px solid var(--accent-primary);">
+                                    <th style="padding: 1rem; color: var(--accent-primary);"></th>
+                                    <th style="padding: 1rem; color: var(--accent-primary);">Order Matters (Permutations)</th>
+                                    <th style="padding: 1rem; color: var(--accent-primary);">Order Does NOT Matter (Combinations)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr style="border-bottom: 1px solid rgba(0,0,0,0.05);">
+                                    <td style="padding: 1rem; font-weight: 600;">With Replacement</td>
+                                    <td style="padding: 1rem;">\( n^k \)<br><em>k choices, n possibilities each time</em></td>
+                                    <td style="padding: 1rem;">\( \binom{n+k-1}{k} \)<br><em>Keywords: identical, distribute, allocate</em></td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 1rem; font-weight: 600;">Without<br>Replacement</td>
+                                    <td style="padding: 1rem;">\( P_n^k = \frac{n!}{(n-k)!} \)<br><em>Fewer choices at each step</em></td>
+                                    <td style="padding: 1rem;">\( C_n^k = \binom{n}{k} = \frac{n!}{k!(n-k)!} \)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="glass-panel concept-block">
+                    <h3>📊 Conditional & Independent Probability</h3>
+                    <div class="split-box">
+                        <div class="sub-box">
+                            <h4>Conditional Probability</h4>
+                            <p class="formula-inline">\( P(A|B) = \frac{P(A \cap B)}{P(B)} \)</p>
+                            <p><em>Interpretation: Probability of A knowing B has occurred. Sample space is reduced to B.</em></p>
+                        </div>
+                        <div class="sub-box">
+                            <h4>Multiplication / Chain Rule</h4>
+                            <p class="formula-inline">\( P(A \cap B) = P(A|B)P(B) \)</p>
+                            <br>
+                            <p class="formula-inline">\( P(A_1 \cap A_2 \cap A_3) = P(A_1) P(A_2|A_1) P(A_3|A_1 A_2) \)</p>
+                        </div>
+                    </div>
+                    <div class="method-box">
+                        <h4>🎯 Independence</h4>
+                        <p>Definition: \( P(A|B) = P(A) \) OR \( P(A \cap B) = P(A)P(B) \)</p>
+                        <p><strong>Crucial:</strong> Independent &ne; Disjoint. Disjoint &rArr; NOT independent (if prob > 0).<br>
+                        If A and B are independent, then (A and B&supc;) are independent, and (A&supc; and B) are independent.</p>
+                    </div>
+                </div>
+
+                <div class="glass-panel concept-block">
+                    <h3>📊 Total Probability & Bayes' Theorem</h3>
+                    <div class="split-box">
+                        <div class="sub-box">
+                            <h4>Total Probability</h4>
+                            <p class="formula-inline">\( P(A) = \sum P(A|B_i)P(B_i) \)</p>
+                            <p><em>Intuition: Weighted average using partition \( B_i \).</em></p>
+                        </div>
+                        <div class="sub-box">
+                            <h4>Bayes' Theorem</h4>
+                            <p class="formula-inline">\( P(B_i|A) = \frac{P(A|B_i)P(B_i)}{\sum P(A|B_j)P(B_j)} \)</p>
+                            <p><em>Intuition: Reverse the condition: \( P(\text{cause } | \text{ effect}) \).</em></p>
+                        </div>
+                    </div>
+                    <div class="method-box">
+                        <h4>🧠 Bayes Deep Dive</h4>
+                        <p><strong>The Core Problem:</strong> You know \( P(A|B) \) but you want \( P(B|A) \) &rarr; Reverse the condition!</p>
+                        <ul>
+                            <li>\( P(B) \) = What you thought BEFORE (Prior)</li>
+                            <li>\( P(A|B) \) = How likely A is if B is true</li>
+                            <li>\( P(B|A) \) = What you think AFTER (Posterior)</li>
+                        </ul>
+                        <p><em>Do not just look at \( P(A|B) \). Compare A if B is true vs A if B is false.</em></p>
+                    </div>
+                </div>
+
+                <div class="glass-panel concept-block">
+                    <h3>⚠️ Crucial Tips & Common Traps</h3>
+                    <div class="split-box">
+                        <div class="sub-box" style="border-left: 4px solid var(--accent-primary);">
+                            <h4>🎯 Keyword Translations</h4>
+                            <ul>
+                                <li><strong>"Given that / Knowing"</strong> &rarr; Conditional</li>
+                                <li><strong>"Update / Information"</strong> &rarr; Bayes</li>
+                                <li><strong>"Sequential draws"</strong> &rarr; Chain rule (without replacement)</li>
+                                <li><strong>"At least one"</strong> &rarr; Complement</li>
+                                <li><strong>"Sequence"</strong> &rarr; Chain rule</li>
+                            </ul>
+                        </div>
+                        <div class="sub-box" style="border-left: 4px solid #ef4444;">
+                            <h4>❌ Classic Mistakes</h4>
+                            <ul>
+                                <li>Forgetting to divide by \( P(B) \) in conditional probability.</li>
+                                <li>Confusing \( P(A|B) \) and \( P(B|A) \). They are NOT equal!</li>
+                                <li>Assuming independence blindly.</li>
+                                <li>Forgetting the partition denominator in Total Probability.</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
 
