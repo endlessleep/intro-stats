@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statistiques - Fiches de Révision</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <div class="glow-effect"></div>
+                <h1>STATISTIQUES</h1>
+                <p>Programme de Révision</p>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#" data-target="home" class="active">Accueil</a></li>
+                <li><a href="#" data-target="chap1">Chapitre 1 : Introduction</a></li>
+                <li><a href="#" data-target="chap2">Chapitre 2 : Probabilités</a></li>
+                <li><a href="#" data-target="chap3">Chapitre 3 : Tests d'Hypothèses</a></li>
+                <li><a href="#" data-target="chap4">Chapitre 4 : Régressions</a></li>
+                <li><a href="#" data-target="chatbot" class="ai-button">🤖 Assistant IA</a></li>
+            </ul>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="content-area">
+            <div id="home" class="page active">
+                <h2>Bienvenue dans le module Statistiques</h2>
+                <div class="glass-panel">
+                    <p>Sélectionnez un chapitre dans le menu latéral pour commencer vos révisions.</p>
+                </div>
+            </div>
+
+            <div id="chap1" class="page">
+                <h2>Chapitre 1 : Introduction</h2>
+                <div class="glass-panel">
+                    <p>Contenu à venir...</p>
+                </div>
+            </div>
+
+            <div id="chap2" class="page">
+                <h2>Chapitre 2 : Probabilités</h2>
+                <div class="glass-panel">
+                    <p>Contenu à venir...</p>
+                </div>
+            </div>
+
+            <div id="chap3" class="page">
+                <h2>Chapitre 3 : Tests d'Hypothèses</h2>
+                <div class="glass-panel">
+                    <p>Contenu à venir...</p>
+                </div>
+            </div>
+
+            <div id="chap4" class="page">
+                <h2>Chapitre 4 : Régressions</h2>
+                <div class="glass-panel">
+                    <p>Contenu à venir...</p>
+                </div>
+            </div>
+
+            <div id="chatbot" class="page">
+                <h2>Assistant IA - Mode Statistiques</h2>
+                <div class="glass-panel ai-panel">
+                    <div class="chat-display">
+                        <div class="message ai-message">Bonjour ! Je suis votre assistant pour les cours de statistiques. Posez-moi vos questions.</div>
+                        <!-- Chat messages will appear here -->
+                    </div>
+                    <div class="chat-input-area">
+                        <input type="text" placeholder="Posez une question sur les statistiques..." disabled>
+                        <button disabled>Envoyer</button>
+                    </div>
+                    <p class="beta-note">* L'IA sera connectée prochainement.</p>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <!-- Background elements for futuristic feel -->
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
