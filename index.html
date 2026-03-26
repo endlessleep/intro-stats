@@ -42,20 +42,20 @@
                 
                 <div class="glass-panel concept-block">
                     <h3>📊 Percentiles / Quartiles</h3>
-                    <p class="definition"><strong>Definition:</strong> A value such that at least \\( p\\% \\) of observations are less than or equal to it and at least \\( (1-p)\\% \\) are greater than or equal to it.</p>
+                    <p class="definition"><strong>Definition:</strong> A value such that at least \( p\% \) of observations are less than or equal to it and at least \( (1-p)\% \) are greater than or equal to it.</p>
                     <div class="method-box">
                         <h4>Methodology</h4>
-                        <p>Position: \\( \\text{position} = p \\times n \\)</p>
+                        <p>Position: \( \text{position} = p \times n \)</p>
                         <ul>
                             <li>If it's not an integer &rarr; take the <strong>next integer</strong>.</li>
-                            <li>If it's an integer &rarr; take the <strong>average</strong> of the positions \\( pn \\) and \\( pn+1 \\).</li>
+                            <li>If it's an integer &rarr; take the <strong>average</strong> of the positions \( pn \) and \( pn+1 \).</li>
                         </ul>
                     </div>
                     <div class="formula-box">
                         <h4>Key Quartiles</h4>
-                        <p>\\( Q1 \\) = 25%</p>
-                        <p>\\( Q2 \\) = Median (50%)</p>
-                        <p>\\( Q3 \\) = 75%</p>
+                        <p>\( Q1 \) = 25%</p>
+                        <p>\( Q2 \) = Median (50%)</p>
+                        <p>\( Q3 \) = 75%</p>
                     </div>
                 </div>
 
@@ -63,7 +63,7 @@
                     <h3>📊 Mean</h3>
                     <p class="definition"><strong>Definition:</strong> The average value of the data.</p>
                     <div class="formula-box">
-                        <p><span class="formula-inline">\\( \\bar{x} = \\frac{1}{n} \\sum x_i \\)</span></p>
+                        <p><span class="formula-inline">\( \bar{x} = \frac{1}{n} \sum x_i \)</span></p>
                     </div>
                 </div>
 
@@ -83,23 +83,23 @@
 
                 <div class="glass-panel concept-block">
                     <h3>📊 Variance & Standard Deviation</h3>
-                    <p class="definition"><strong>Variance (sample, unbiased):</strong> The average squared deviation from the mean, computed using \\( n-1 \\).</p>
+                    <p class="definition"><strong>Variance (sample, unbiased):</strong> The average squared deviation from the mean, computed using \( n-1 \).</p>
                     <p class="definition"><strong>Standard Deviation:</strong> The square root of the variance, measuring dispersion around the mean.</p>
                     <div class="formula-box">
-                        <p><strong>Variance:</strong> <span class="formula-inline">\\( s^2 = \\frac{1}{n-1} \\sum (x_i - \\bar{x})^2 \\)</span></p>
-                        <p><strong>Standard Deviation:</strong> <span class="formula-inline">\\( s = \\sqrt{s^2} \\)</span></p>
+                        <p><strong>Variance:</strong> <span class="formula-inline">\( s^2 = \frac{1}{n-1} \sum (x_i - \bar{x})^2 \)</span></p>
+                        <p><strong>Standard Deviation:</strong> <span class="formula-inline">\( s = \sqrt{s^2} \)</span></p>
                     </div>
                     <div class="method-box">
                         <h4>Note</h4>
-                        <p>Always use \\( n-1 \\) for a sample to ensure the standard deviation is <strong>unbiased</strong>.</p>
+                        <p>Always use \( n-1 \) for a sample to ensure the standard deviation is <strong>unbiased</strong>.</p>
                     </div>
                 </div>
 
                 <div class="glass-panel concept-block">
                     <h3>📊 Interquartile Range (IQR)</h3>
-                    <p class="definition"><strong>Definition:</strong> The difference between the third and first quartile (\\( Q3 - Q1 \\)), representing the spread of the middle 50% of the data.</p>
+                    <p class="definition"><strong>Definition:</strong> The difference between the third and first quartile (\( Q3 - Q1 \)), representing the spread of the middle 50% of the data.</p>
                     <div class="formula-box">
-                        <p><span class="formula-inline">\\( IQR = Q3 - Q1 \\)</span></p>
+                        <p><span class="formula-inline">\( IQR = Q3 - Q1 \)</span></p>
                     </div>
                 </div>
 
@@ -149,15 +149,15 @@
                         <div class="sub-box">
                             <h4>IQR Method</h4>
                             <p>Data is considered an outlier if it falls outside the bounds:</p>
-                            <p class="formula-inline">\\( Q1 - 1.5 \\times IQR \\)</p>
+                            <p class="formula-inline">\( Q1 - 1.5 \times IQR \)</p>
                             <br>
-                            <p class="formula-inline">\\( Q3 + 1.5 \\times IQR \\)</p>
+                            <p class="formula-inline">\( Q3 + 1.5 \times IQR \)</p>
                         </div>
                         <div class="sub-box">
                             <h4>Z-Score Method</h4>
                             <p><strong>Definition:</strong> A measure of how many standard deviations a value is from the mean.</p>
-                            <p class="formula-inline">\\( z = \\frac{x - \\bar{x}}{s} \\)</p>
-                            <p>Outlier if \\( |z| > 3 \\)</p>
+                            <p class="formula-inline">\( z = \frac{x - \bar{x}}{s} \)</p>
+                            <p>Outlier if \( |z| > 3 \)</p>
                         </div>
                     </div>
                 </div>
