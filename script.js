@@ -108,4 +108,35 @@ Please generate a NEW variant for this statistics problem honoring the prioritiz
             await copyToClipboard(prompt);
         });
     });
+
+    // --- ADVANCED GENERATOR BRIDGE ---
+    const ADVANCED_PROMPT = `[CONTEXT: EXAM GENERATOR – ADVANCED]
+
+You are a university statistics professor designing ORIGINAL midterm exercises.
+
+[OBJECTIVE]
+Generate ONE new, original exam-style problem worth 4–5 points.
+
+This must NOT be a variation of the sample test.  
+It must be a NEW type of problem that could realistically appear in the exam.
+
+[TOPICS YOU MUST USE]
+You must base the exercise on one or a combination of:
+- descriptive statistics (mean, variance, boxplot, interpretation)
+- probability (events, independence, inclusion-exclusion)
+- conditional probability and Bayes theorem
+- combinatorics (permutations, combinations, counting)
+
+[CRITICAL REQUIREMENTS]
+- The exercise must require reasoning (not just plugging formulas)
+- It must combine concepts if possible (e.g., counting + probability, or Bayes + interpretation)
+- Avoid simple computation-only questions
+- Avoid copying structures from the sample test
+
+[DIFFICULTY]
+Match a real university midterm (intermediate level, not trivial, not impossible). First provide the problem text for the student, then explicitly separate and provide the detailed, step-by-step Correct Answer Key. Use proper LaTeX for all math.`;
+
+    document.querySelector('.generate-advanced-btn')?.addEventListener('click', async () => {
+        await copyToClipboard(ADVANCED_PROMPT);
+    });
 });
