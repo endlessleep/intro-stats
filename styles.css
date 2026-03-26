@@ -536,3 +536,15 @@ h2 {
 @keyframes blink { 
     50% { opacity: 0; } 
 }
+
+/* Modal System */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.3);
+    backdrop-filter: blur(4px);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
