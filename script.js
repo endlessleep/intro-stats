@@ -77,7 +77,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     links.forEach(link => {
         link.addEventListener('click', (e) => {
-            if (e.currentTarget.id === 'settings-btn') return;
             e.preventDefault();
             links.forEach(l => l.classList.remove('active'));
             e.currentTarget.classList.add('active');
@@ -88,219 +87,101 @@ document.addEventListener('DOMContentLoaded', () => {
     const activeLink = document.querySelector('.nav-links a.active');
     if (activeLink && activeLink.getAttribute('data-target')) switchPage(activeLink.getAttribute('data-target'));
 
-    // --- API INTEGRATION: Settings & LocalStorage ---
-    const apiKeyInput = document.getElementById('api-key-input');
-    const saveBtn = document.getElementById('save-settings');
-    const cancelBtn = document.getElementById('cancel-settings');
-    const settingsModal = document.getElementById('settings-modal');
-    const settingsBtn = document.getElementById('settings-btn');
-
-    const openSettings = (e) => {
-        if (e) e.preventDefault();
-        apiKeyInput.value = localStorage.getItem('openai_api_key') || '';
-        settingsModal.style.display = 'flex';
-    };
-
-    if (settingsBtn) settingsBtn.addEventListener('click', openSettings);
-
-    if (cancelBtn) cancelBtn.addEventListener('click', () => {
-        settingsModal.style.display = 'none';
-    });
-
-    if (saveBtn) saveBtn.addEventListener('click', () => {
-        const val = apiKeyInput.value.trim();
-        if (val) {
-            localStorage.setItem('openai_api_key', val);
-            showToast('API Key saved securely!', '🔒');
-        } else {
-            localStorage.removeItem('openai_api_key');
-            showToast('API Key removed.', '🗑️');
-        }
-        settingsModal.style.display = 'none';
-    });
-
-    const getApiKey = () => {
-        const key = localStorage.getItem('openai_api_key');
-        if (!key) {
-            showToast('Please set your OpenAI API Key first!', '⚠️');
-            openSettings();
-            return null;
-        }
-        return key;
-    };
-
-    // --- API INTEGRATION: Fetch OpenAI ---
+    // --- CHATGPT PRO BRIDGE (Clipboard Strategy) ---
     const SYSTEM_PROMPT = `You are an expert statistics professor preparing students for an exam. Your role:
 1. Reproduce exercises in the SAME FORMAT as the sample test
 2. Ensure FULL COVERAGE of the syllabus. Adapt difficulty to university midterm level.
 3. Keep exact HTML formatting including the exact class names used in the original problem.
-4. Use \\( ... \\) for inline math and \\[ ... \\] for block math (MathJax). Do NOT double escape backslashes.
-5. Do NOT output markdown code blocks (like \`\`\`html). Only output raw HTML!`;
+4. Use LaTeX for math inline and block.`;
 
-    const callOpenAI = async (messages) => {
-        const apiKey = getApiKey();
-        if (!apiKey) return null;
-
+    const copyToClipboard = async (text) => {
         try {
-            const response = await fetch('https://api.openai.com/v1/chat/completions', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${apiKey}`
-                },
-                body: JSON.stringify({
-                    model: 'gpt-4o-mini',
-                    messages: messages,
-                    temperature: 0.7,
-                })
-            });
-
-            if (!response.ok) {
-                const err = await response.json();
-                throw new Error(err.error?.message || 'API Error');
-            }
-
-            const data = await response.json();
-            return data.choices[0].message.content;
-        } catch (error) {
-            console.error(error);
-            showToast(`Error: ${error.message}`, '❌');
-            return null;
+            await navigator.clipboard.writeText(text);
+            showToast('Prompt copié ! Ouvre ChatGPT et fais Cmd+V', '📋');
+            // Wait a moment for the user to see the toast, then open ChatGPT
+            setTimeout(() => {
+                window.open('https://chatgpt.com/', '_blank');
+            }, 1500);
+        } catch (err) {
+            console.error('Failed to copy: ', err);
+            // Fallback for older browsers
+            const textArea = document.createElement("textarea");
+            textArea.value = text;
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand("Copy");
+            textArea.remove();
+            showToast('Prompt copié ! Ouvre ChatGPT et fais Cmd+V', '📋');
+            setTimeout(() => {
+                window.open('https://chatgpt.com/', '_blank');
+            }, 1500);
         }
     };
 
-    // --- AUTO-GENERATE VARIANT ---
-    document.querySelectorAll('.generate-btn:not(#save-settings)').forEach(btn => {
+    // Auto-Generate Variant Bridge
+    document.querySelectorAll('.generate-btn').forEach(btn => {
         btn.addEventListener('click', async (e) => {
-            if (!getApiKey()) return;
             const btnParent = e.target.closest('.page');
             const problemContainer = btnParent.querySelector('.problem-container');
-            const originalProblemText = problemContainer.innerHTML;
+            const originalProblemText = problemContainer.innerText; 
             
-            showToast('Cooking a new problem formulation...', '✨');
-            const originalBtnText = btn.innerHTML;
-            btn.innerHTML = '⏳ Generating...';
-            btn.disabled = true;
+            const prompt = `[CONTEXT: DUAL-ROLE TUTOR]
+${SYSTEM_PROMPT}
 
-            const messages = [
-                { role: "system", content: SYSTEM_PROMPT },
-                { role: "user", content: `Please generate a NEW variant for the following problem HTML container. Use completely new context, numbers, and test different syllabus topics. You must return ONLY the raw replacement HTML.\nOriginal Problem HTML:\n${originalProblemText}` }
-            ];
+[CURRENT EXAM PROBLEM]
+${originalProblemText}
 
-            const newContent = await callOpenAI(messages);
-            
-            btn.innerHTML = originalBtnText;
-            btn.disabled = false;
+[YOUR TASK]
+Please generate a NEW variant for this statistics problem. Use completely new context, numbers, and test different syllabus topics. You must act as the professor and give the student the URGENT new midterm variant directly. Structure it clearly so the student can solve it directly in this chat.`;
 
-            if (newContent) {
-                const cleaned = newContent.replace(/^```html|```$/gm, '').trim();
-                problemContainer.innerHTML = cleaned;
-                
-                if (window.MathJax) {
-                    MathJax.typesetPromise([problemContainer]).then(() => {
-                        showToast('Problem successfully updated!', '✅');
-                    }).catch(err => {
-                        console.error(err);
-                        showToast('Problem updated (MathJax error)!', '⚠️');
-                    });
-                } else {
-                    showToast('Problem successfully updated!', '✅');
-                }
-            }
+            await copyToClipboard(prompt);
         });
     });
 
-    // --- SHOW CORRECTION ---
+    // Show Correction Bridge
     document.querySelectorAll('.correction-btn').forEach(btn => {
         btn.addEventListener('click', async (e) => {
-            if (!getApiKey()) return;
             const btnParent = e.target.closest('.page');
             const problemContainer = btnParent.querySelector('.problem-container');
             const problemText = problemContainer.innerText;
-            const chatDisplay = btnParent.querySelector('.chat-display');
 
-            showToast('Consulting expert notes...', '✅');
-            const originalBtnText = btn.innerHTML;
-            btn.innerHTML = '⏳ Fetching...';
-            btn.disabled = true;
+            const prompt = `[CONTEXT: EXPERT STATISTICS TUTOR]
+${SYSTEM_PROMPT}
 
-            chatDisplay.innerHTML += `
-                <div class="message" style="align-self: flex-end; background: var(--accent-primary); color: white;">
-                    Teacher, please give me the correction for this exact problem.
-                </div>
-            `;
-            chatDisplay.scrollTop = chatDisplay.scrollHeight;
+[CURRENT EXAM PROBLEM]
+${problemText}
 
-            const messages = [
-                { role: "system", content: SYSTEM_PROMPT },
-                { role: "user", content: `Provide the correction for the following problem. Give the final answer, clear mathematical reasoning, and point out common mistakes. Format cleanly in HTML without wrapper tags. Use \\( ... \\) for math. Problem Text: ${problemText}` }
-            ];
+[YOUR TASK]
+Provide the correction for this problem. Give the final answer clearly, step-by-step mathematical reasoning, and point out common mistakes that students make. Use a friendly, encouraging professor tone. Format it neatly.`;
 
-            const responseText = await callOpenAI(messages);
-            
-            btn.innerHTML = originalBtnText;
-            btn.disabled = false;
-
-            if (responseText) {
-                const cleaned = responseText.replace(/^```html|```$/gm, '').trim();
-                const aiResponseDiv = document.createElement('div');
-                aiResponseDiv.className = 'message ai-message';
-                aiResponseDiv.innerHTML = `<strong>Prof AI:</strong><br>${cleaned}`;
-                
-                chatDisplay.appendChild(aiResponseDiv);
-                
-                if (window.MathJax) {
-                    MathJax.typesetPromise([aiResponseDiv]).then(() => {
-                        chatDisplay.scrollTop = chatDisplay.scrollHeight;
-                    });
-                }
-            }
+            await copyToClipboard(prompt);
         });
     });
     
-    // --- CUSTOM CHAT INPUT ---
+    // Custom Chat Input Bridge
     document.querySelectorAll('.chat-input-area button').forEach(btn => {
         btn.addEventListener('click', async (e) => {
-            if (!getApiKey()) return;
             const input = e.target.previousElementSibling;
             const text = input.value.trim();
             if (!text) return;
             
             const btnParent = e.target.closest('.page');
             const problemContainer = btnParent.querySelector('.problem-container');
-            const chatDisplay = btnParent.querySelector('.chat-display');
+            const problemText = problemContainer.innerText;
 
-            showToast('Thinking...', '🌐');
             input.value = ''; 
-            
-            chatDisplay.innerHTML += `
-                <div class="message" style="align-self: flex-end; background: var(--accent-primary); color: white;">
-                    ${text}
-                </div>
-            `;
-            chatDisplay.scrollTop = chatDisplay.scrollHeight;
 
-            const messages = [
-                { role: "system", content: SYSTEM_PROMPT },
-                { role: "user", content: `Contextual problem currently on screen: ${problemContainer.innerText}\n\nStudent question: ${text}\n\nAnswer the student naturally, using HTML formatting for structure and \\( ... \\) for math.` }
-            ];
+            const prompt = `[CONTEXT: EXPERT STATISTICS TUTOR]
+[CURRENT EXAM PROBLEM]
+${problemText}
 
-            const responseText = await callOpenAI(messages);
+[STUDENT QUESTION]
+${text}
 
-            if (responseText) {
-                const cleaned = responseText.replace(/^```html|```$/gm, '').trim();
-                const aiResponseDiv = document.createElement('div');
-                aiResponseDiv.className = 'message ai-message';
-                aiResponseDiv.innerHTML = `<strong>Prof AI:</strong><br>${cleaned}`;
-                
-                chatDisplay.appendChild(aiResponseDiv);
-                
-                if (window.MathJax) {
-                    MathJax.typesetPromise([aiResponseDiv]).then(() => {
-                        chatDisplay.scrollTop = chatDisplay.scrollHeight;
-                    });
-                }
-            }
+[YOUR TASK]
+Answer the student's question accurately regarding the statistics problem above. Guide them step by step if they are stuck.`;
+
+            await copyToClipboard(prompt);
         });
     });
 
