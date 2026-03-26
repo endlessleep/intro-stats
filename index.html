@@ -19,25 +19,16 @@
                 <p>Revision Program</p>
             </div>
             <ul class="nav-links">
-                <li><a href="#" data-target="home" class="active">Home</a></li>
-                <li><a href="#" data-target="chap1">Chap 1: Descriptive Statistics</a></li>
+                <li><a href="#" data-target="chap1" class="active">Chap 1: Descriptive Stats</a></li>
                 <li><a href="#" data-target="chap2">Chap 2: Probability</a></li>
-                <li><a href="#" data-target="chap3">Chap 3: Hypothesis Testing</a></li>
-                <li><a href="#" data-target="chap4">Chap 4: Regressions</a></li>
                 <li><a href="#" data-target="chatbot" class="ai-button">🤖 AI Assistant</a></li>
             </ul>
         </nav>
 
         <!-- Main Content Area -->
         <main class="content-area">
-            <div id="home" class="page active">
-                <h2>Welcome to Statistics Module</h2>
-                <div class="glass-panel">
-                    <p>Select a chapter from the sidebar to start your revisions.</p>
-                </div>
-            </div>
-
-            <div id="chap1" class="page">
+            
+            <div id="chap1" class="page active">
                 <h2>Chapter 1: Descriptive Statistics</h2>
                 
                 <div class="glass-panel concept-block">
@@ -45,17 +36,11 @@
                     <p class="definition"><strong>Definition:</strong> A value such that at least \( p\% \) of observations are less than or equal to it and at least \( (1-p)\% \) are greater than or equal to it.</p>
                     <div class="method-box">
                         <h4>Methodology</h4>
-                        <p>Position: \( \text{position} = p \times n \)</p>
+                        <p class="formula-inline">\( \text{position} = p \times n \)</p>
                         <ul>
-                            <li>If it's not an integer &rarr; take the <strong>next integer</strong>.</li>
-                            <li>If it's an integer &rarr; take the <strong>average</strong> of the positions \( pn \) and \( pn+1 \).</li>
+                            <li>Not an integer &rarr; <strong>next integer</strong>.</li>
+                            <li>Integer &rarr; <strong>average</strong> of positions \( pn \) and \( pn+1 \).</li>
                         </ul>
-                    </div>
-                    <div class="formula-box">
-                        <h4>Key Quartiles</h4>
-                        <p>\( Q1 \) = 25%</p>
-                        <p>\( Q2 \) = Median (50%)</p>
-                        <p>\( Q3 \) = 75%</p>
                     </div>
                 </div>
 
@@ -63,55 +48,28 @@
                     <h3>📊 Mean</h3>
                     <p class="definition"><strong>Definition:</strong> The average value of the data.</p>
                     <div class="formula-box">
-                        <p><span class="formula-inline">\( \bar{x} = \frac{1}{n} \sum x_i \)</span></p>
-                    </div>
-                </div>
-
-                <div class="glass-panel concept-block">
-                    <h3>📊 Median & Mode</h3>
-                    <div class="split-box">
-                        <div class="sub-box">
-                            <h4>Median</h4>
-                            <p class="definition">The middle value of an ordered dataset.</p>
-                        </div>
-                        <div class="sub-box">
-                            <h4>Mode</h4>
-                            <p class="definition">The value that occurs most frequently.</p>
-                        </div>
+                        <p>\( \bar{x} = \frac{1}{n} \sum x_i \)</p>
                     </div>
                 </div>
 
                 <div class="glass-panel concept-block">
                     <h3>📊 Variance & Standard Deviation</h3>
-                    <p class="definition"><strong>Variance (sample, unbiased):</strong> The average squared deviation from the mean, computed using \( n-1 \).</p>
-                    <p class="definition"><strong>Standard Deviation:</strong> The square root of the variance, measuring dispersion around the mean.</p>
                     <div class="formula-box">
-                        <p><strong>Variance:</strong> <span class="formula-inline">\( s^2 = \frac{1}{n-1} \sum (x_i - \bar{x})^2 \)</span></p>
-                        <p><strong>Standard Deviation:</strong> <span class="formula-inline">\( s = \sqrt{s^2} \)</span></p>
+                        <p>Variance: \( s^2 = \frac{1}{n-1} \sum (x_i - \bar{x})^2 \)</p>
+                        <p>Standard Deviation: \( s = \sqrt{s^2} \)</p>
                     </div>
-                    <div class="method-box">
-                        <h4>Note</h4>
-                        <p>Always use \( n-1 \) for a sample to ensure the standard deviation is <strong>unbiased</strong>.</p>
-                    </div>
+                    <p><em>Always use \( n-1 \) to ensure the estimator is unbiased.</em></p>
                 </div>
 
                 <div class="glass-panel concept-block">
                     <h3>📊 Interquartile Range (IQR)</h3>
-                    <p class="definition"><strong>Definition:</strong> The difference between the third and first quartile (\( Q3 - Q1 \)), representing the spread of the middle 50% of the data.</p>
                     <div class="formula-box">
-                        <p><span class="formula-inline">\( IQR = Q3 - Q1 \)</span></p>
+                        <p>\( IQR = Q3 - Q1 \)</p>
                     </div>
                 </div>
 
                 <div class="glass-panel concept-block">
                     <h3>📊 Boxplot</h3>
-                    <p class="definition"><strong>Definition:</strong> A graphical summary based on the five-number summary: minimum, Q1, median, Q3, and maximum.</p>
-                    <div class="method-box">
-                        <ul>
-                            <li><strong>Whiskers:</strong> Values within bounds.</li>
-                            <li><strong>Outliers:</strong> Values outside the bounds.</li>
-                        </ul>
-                    </div>
                     <div class="svg-container">
                         <!-- FUTURISTIC SVG BOXPLOT diagram -->
                         <svg viewBox="0 0 500 200" width="100%" height="200px">
@@ -144,32 +102,21 @@
 
                 <div class="glass-panel concept-block">
                     <h3>📊 Outliers</h3>
-                    <p class="definition"><strong>Definition:</strong> An observation that lies far from the rest of the data.</p>
                     <div class="split-box">
                         <div class="sub-box">
                             <h4>IQR Method</h4>
-                            <p>Data is considered an outlier if it falls outside the bounds:</p>
-                            <p class="formula-inline">\( Q1 - 1.5 \times IQR \)</p>
-                            <br>
-                            <p class="formula-inline">\( Q3 + 1.5 \times IQR \)</p>
+                            <div class="formula-box">
+                                <p>\( Q1 - 1.5 \times IQR \)</p>
+                                <p>\( Q3 + 1.5 \times IQR \)</p>
+                            </div>
                         </div>
                         <div class="sub-box">
                             <h4>Z-Score Method</h4>
-                            <p><strong>Definition:</strong> A measure of how many standard deviations a value is from the mean.</p>
-                            <p class="formula-inline">\( z = \frac{x - \bar{x}}{s} \)</p>
-                            <p>Outlier if \( |z| > 3 \)</p>
+                            <div class="formula-box">
+                                <p>\( z = \frac{x - \bar{x}}{s} \)</p>
+                                <p>Outlier if \( |z| > 3 \)</p>
+                            </div>
                         </div>
-                    </div>
-                </div>
-
-                <div class="glass-panel concept-block">
-                    <h3>📊 Skewness</h3>
-                    <p class="definition"><strong>Definition:</strong> The asymmetry of a distribution.</p>
-                    <div class="method-box">
-                        <ul>
-                            <li>If Median is closer to Q1 &rarr; <strong>Right-skew</strong> (positive skew)</li>
-                            <li>If Median is closer to Q3 &rarr; <strong>Left-skew</strong> (negative skew)</li>
-                        </ul>
                     </div>
                 </div>
             </div>
@@ -181,84 +128,68 @@
                     <h3>📊 Sets & Logic</h3>
                     <div class="split-box">
                         <div class="sub-box">
-                            <h4>Basic Operations</h4>
-                            <p class="definition"><strong>Union (\( A \cup B \)):</strong> A or B occurs.</p>
-                            <p class="definition"><strong>Intersection (\( A \cap B \)):</strong> A and B occur.</p>
+                            <h4>Operations</h4>
+                            <p class="definition"><strong>Union (\( A \cup B \)):</strong> Either A or B occurs (at least one).</p>
+                            <p class="definition"><strong>Intersection (\( A \cap B \)):</strong> Both A and B occur.</p>
                         </div>
                         <div class="sub-box">
-                            <h4>🎯 Logic Connections</h4>
-                            <p><strong>Subset (\( A \subset B \)):</strong> If A happens, B happens.</p>
-                            <ul>
-                                <li>"At least one" &rarr; Union</li>
-                                <li>"All" &rarr; Intersection</li>
-                                <li>"None" &rarr; Complement</li>
-                            </ul>
+                            <h4>🎯 De Morgan's Laws</h4>
+                            <div class="formula-box">
+                                <p>\( (A \cup B)^c = A^c \cap B^c \)</p>
+                                <p>\( (A \cap B)^c = A^c \cup B^c \)</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="method-box">
-                        <h4>🎯 De Morgan's Laws</h4>
-                        <p class="formula-inline">\( (A \cup B)^c = A^c \cap B^c \)</p>
-                        <br>
-                        <p class="formula-inline">\( (A \cap B)^c = A^c \cup B^c \)</p>
                     </div>
                 </div>
 
                 <div class="glass-panel concept-block">
-                    <h3>📊 Core Probability Rules</h3>
-                    <p class="definition"><strong>Classic Probability:</strong> \( P(A) = \frac{N(A)}{N(S)} \) (or \( \frac{\text{favourable}}{\text{total}} \))<br>
-                    <em>Conditions: \( S \) is finite and outcomes are equiprobable.</em></p>
-                    <p class="definition"><strong>Geometric Probability:</strong> \( P(A) = \frac{|A|}{|S|} \) (Area / Volume)</p>
-                    
-                    <div class="method-box">
-                        <h4>Axioms</h4>
-                        <ul>
-                            <li>\( P(A) \ge 0 \)</li>
-                            <li>\( P(S) = 1 \)</li>
-                            <li>Additivity if disjoint.</li>
-                        </ul>
+                    <h3>📊 Probability Axioms & Core Rules</h3>
+                    <div class="formula-box">
+                        <p>Classic Probability: \( P(A) = \frac{N(A)}{N(S)} \)</p>
                     </div>
-                    
-                    <div class="split-box">
+                    <p><em>Conditions: \( S \) is finite and outcomes are equiprobable.</em></p>
+
+                    <div class="split-box" style="margin-top: 1.5rem;">
                         <div class="sub-box">
                             <h4>Complement</h4>
-                            <p class="formula-inline">\( P(A^c) = 1 - P(A) \)</p>
-                            <p><em>Use for: "at least one" or "none".</em></p>
-                            <p>\( P(\text{at least one}) = 1 - P(\text{none}) \)</p>
-                            <p>\( P(\text{none}) = P(\bigcap A_i^c) \)</p>
+                            <div class="formula-box" style="margin-top: 1rem;">
+                                <p>\( P(A^c) = 1 - P(A) \)</p>
+                            </div>
+                            <p><em>Use for "at least one" or "none".</em></p>
                         </div>
                         <div class="sub-box">
-                            <h4>Union (Addition Rule)</h4>
-                            <p class="formula-inline">\( P(A \cup B) = P(A) + P(B) - P(A \cap B) \)</p>
+                            <h4>Addition Rule (Union)</h4>
+                            <div class="formula-box" style="margin-top: 1rem;">
+                                <p>\( P(A \cup B) = P(A) + P(B) - P(A \cap B) \)</p>
+                            </div>
                             <p><strong>Disjoint:</strong> \( P(A \cup B) = P(A) + P(B) \)</p>
-                            <br>
-                            <p><em>Always check if disjoint! Disjoint &rarr; simple addition. Otherwise &rarr; subtract intersection.</em></p>
                         </div>
                     </div>
                 </div>
 
                 <div class="glass-panel concept-block">
-                    <h3>📊 Advanced Rules</h3>
+                    <h3>📊 Advanced Metrics</h3>
                     <div class="split-box">
                         <div class="sub-box">
-                            <h4>Combinations & Geometry</h4>
-                            <p><strong>Difference (if \( A \subset B \)):</strong> \( P(B \setminus A) = P(B) - P(A) \)</p>
-                            <p><strong>Monotonicity (if \( A \subset B \)):</strong> \( P(A) \le P(B) \)</p>
+                            <h4>Inequalities</h4>
+                            <div class="formula-box">
+                                <p>\( P(A \cup B) \le P(A) + P(B) \)</p>
+                                <p>\( P(A \cap B) \ge P(A) + P(B) - 1 \)</p>
+                            </div>
                         </div>
                         <div class="sub-box">
-                            <h4>Useful Inequalities</h4>
-                            <p class="formula-inline">\( P(A \cup B) \le P(A) + P(B) \)</p>
-                            <br>
-                            <p class="formula-inline">\( P(A \cap B) \ge P(A) + P(B) - 1 \)</p>
+                            <h4>Set Differences & Monotonicity</h4>
+                            <div class="formula-box">
+                                <p>If \( A \subset B \):</p>
+                                <p>\( P(A) \le P(B) \)</p>
+                                <p>\( P(B \setminus A) = P(B) - P(A) \)</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="method-box">
-                        <h4>Discrete Probability</h4>
-                        <p>If \( P(s_i) = p_i \), then \( P(A) = \sum_{s_i \in A} p_i \)</p>
                     </div>
                 </div>
 
                 <div class="glass-panel concept-block">
-                    <h3>📊 Combinatorics (Counting Rules)</h3>
+                    <h3>📊 Combinatorics</h3>
                     <div class="svg-container" style="background: transparent; padding: 0; border: none; box-shadow: none;">
                         <table style="width: 100%; border-collapse: collapse; text-align: left; margin-bottom: 1.5rem;">
                             <thead>
@@ -270,14 +201,14 @@
                             </thead>
                             <tbody>
                                 <tr style="border-bottom: 1px solid rgba(0,0,0,0.05);">
-                                    <td style="padding: 1rem; font-weight: 600;">With Replacement</td>
-                                    <td style="padding: 1rem;">\( n^k \)<br><em>k choices, n possibilities each time</em></td>
-                                    <td style="padding: 1rem;">\( \binom{n+k-1}{k} \)<br><em>Keywords: identical, distribute, allocate</em></td>
+                                    <td style="padding: 1rem; font-weight: 600;">With<br>Replacement</td>
+                                    <td style="padding: 1rem;"><span class="formula-inline">\( n^k \)</span></td>
+                                    <td style="padding: 1rem;"><span class="formula-inline">\( \binom{n+k-1}{k} \)</span></td>
                                 </tr>
                                 <tr>
                                     <td style="padding: 1rem; font-weight: 600;">Without<br>Replacement</td>
-                                    <td style="padding: 1rem;">\( P_n^k = \frac{n!}{(n-k)!} \)<br><em>Fewer choices at each step</em></td>
-                                    <td style="padding: 1rem;">\( C_n^k = \binom{n}{k} = \frac{n!}{k!(n-k)!} \)</td>
+                                    <td style="padding: 1rem;"><span class="formula-inline">\( P_n^k = \frac{n!}{(n-k)!} \)</span></td>
+                                    <td style="padding: 1rem;"><span class="formula-inline">\( C_n^k = \binom{n}{k} \)</span></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -285,25 +216,23 @@
                 </div>
 
                 <div class="glass-panel concept-block">
-                    <h3>📊 Conditional & Independent Probability</h3>
+                    <h3>📊 Independence & Conditional Probability</h3>
                     <div class="split-box">
                         <div class="sub-box">
-                            <h4>Conditional Probability</h4>
-                            <p class="formula-inline">\( P(A|B) = \frac{P(A \cap B)}{P(B)} \)</p>
-                            <p><em>Interpretation: Probability of A knowing B has occurred. Sample space is reduced to B.</em></p>
+                            <h4>Conditional</h4>
+                            <div class="formula-box">
+                                <p>\( P(A|B) = \frac{P(A \cap B)}{P(B)} \)</p>
+                            </div>
+                            <p><strong>Chain Rule:</strong><br><span class="formula-inline">\( P(A \cap B) = P(A|B)P(B) \)</span></p>
                         </div>
                         <div class="sub-box">
-                            <h4>Multiplication / Chain Rule</h4>
-                            <p class="formula-inline">\( P(A \cap B) = P(A|B)P(B) \)</p>
-                            <br>
-                            <p class="formula-inline">\( P(A_1 \cap A_2 \cap A_3) = P(A_1) P(A_2|A_1) P(A_3|A_1 A_2) \)</p>
+                            <h4>Independence</h4>
+                            <div class="formula-box">
+                                <p>\( P(A|B) = P(A) \)</p>
+                            </div>
+                            <p>If A & B are independent, then (A, \( B^c \)) and (\( A^c \), B) are also independent.</p>
+                            <p><em>Note: Disjoint &ne; Independent!</em></p>
                         </div>
-                    </div>
-                    <div class="method-box">
-                        <h4>🎯 Independence</h4>
-                        <p>Definition: \( P(A|B) = P(A) \) OR \( P(A \cap B) = P(A)P(B) \)</p>
-                        <p><strong>Crucial:</strong> Independent &ne; Disjoint. Disjoint &rArr; NOT independent (if prob > 0).<br>
-                        If A and B are independent, then (A and B&supc;) are independent, and (A&supc; and B) are independent.</p>
                     </div>
                 </div>
 
@@ -312,65 +241,21 @@
                     <div class="split-box">
                         <div class="sub-box">
                             <h4>Total Probability</h4>
-                            <p class="formula-inline">\( P(A) = \sum P(A|B_i)P(B_i) \)</p>
-                            <p><em>Intuition: Weighted average using partition \( B_i \).</em></p>
+                            <div class="formula-box">
+                                <p>\( P(A) = \sum P(A|B_i)P(B_i) \)</p>
+                            </div>
+                            <p><em>Use when finding the overall probability natively across partitions.</em></p>
                         </div>
                         <div class="sub-box">
                             <h4>Bayes' Theorem</h4>
-                            <p class="formula-inline">\( P(B_i|A) = \frac{P(A|B_i)P(B_i)}{\sum P(A|B_j)P(B_j)} \)</p>
-                            <p><em>Intuition: Reverse the condition: \( P(\text{cause } | \text{ effect}) \).</em></p>
-                        </div>
-                    </div>
-                    <div class="method-box">
-                        <h4>🧠 Bayes Deep Dive</h4>
-                        <p><strong>The Core Problem:</strong> You know \( P(A|B) \) but you want \( P(B|A) \) &rarr; Reverse the condition!</p>
-                        <ul>
-                            <li>\( P(B) \) = What you thought BEFORE (Prior)</li>
-                            <li>\( P(A|B) \) = How likely A is if B is true</li>
-                            <li>\( P(B|A) \) = What you think AFTER (Posterior)</li>
-                        </ul>
-                        <p><em>Do not just look at \( P(A|B) \). Compare A if B is true vs A if B is false.</em></p>
-                    </div>
-                </div>
-
-                <div class="glass-panel concept-block">
-                    <h3>⚠️ Crucial Tips & Common Traps</h3>
-                    <div class="split-box">
-                        <div class="sub-box" style="border-left: 4px solid var(--accent-primary);">
-                            <h4>🎯 Keyword Translations</h4>
-                            <ul>
-                                <li><strong>"Given that / Knowing"</strong> &rarr; Conditional</li>
-                                <li><strong>"Update / Information"</strong> &rarr; Bayes</li>
-                                <li><strong>"Sequential draws"</strong> &rarr; Chain rule (without replacement)</li>
-                                <li><strong>"At least one"</strong> &rarr; Complement</li>
-                                <li><strong>"Sequence"</strong> &rarr; Chain rule</li>
-                            </ul>
-                        </div>
-                        <div class="sub-box" style="border-left: 4px solid #ef4444;">
-                            <h4>❌ Classic Mistakes</h4>
-                            <ul>
-                                <li>Forgetting to divide by \( P(B) \) in conditional probability.</li>
-                                <li>Confusing \( P(A|B) \) and \( P(B|A) \). They are NOT equal!</li>
-                                <li>Assuming independence blindly.</li>
-                                <li>Forgetting the partition denominator in Total Probability.</li>
-                            </ul>
+                            <div class="formula-box">
+                                <p>\( P(B|A) = \frac{P(A|B)P(B)}{P(A)} \)</p>
+                            </div>
+                            <p><em>Use to reverse conditions. It updates your prior \( P(B) \) using new evidence \( P(A|B) \).</em></p>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div id="chap3" class="page">
-                <h2>Chapter 3: Hypothesis Testing</h2>
-                <div class="glass-panel">
-                    <p>Coming soon...</p>
-                </div>
-            </div>
-
-            <div id="chap4" class="page">
-                <h2>Chapter 4: Regressions</h2>
-                <div class="glass-panel">
-                    <p>Coming soon...</p>
-                </div>
             </div>
 
             <div id="chatbot" class="page">
