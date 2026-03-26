@@ -49,24 +49,28 @@ document.addEventListener('DOMContentLoaded', () => {
     if (activeLink) switchPage(activeLink.getAttribute('data-target'));
 
     // --- PROMPT GENERATOR BRIDGE ---
-    const SYSTEM_PROMPT = `You are an expert statistics professor preparing students for an exam. 
-Your STRICT objective is to generate ONE new variant of the exact same problem structure, format, and difficulty.
-1. Provide the newly generated problem FIRST (so the student can solve it).
-2. Then, provide the step-by-step CORRECT ANSWER KEY clearly separated below it.
+    // --- PROMPT GENERATOR BRIDGE ---
+    const SYSTEM_PROMPT = `[ROLE & CONTEXT]
+You are a distinguished University Professor of Statistics designing rigorous midterm examination variants.
 
-Across multiple generated exercises, ensure balanced coverage of all topics:
-- descriptive statistics
-- probability
-- conditional probability and Bayes
-- counting
+[OBJECTIVE]
+Generate a NEW, unique variant of the provided problem while strictly adhering to its core difficulty level and formatting. First provide the problem text for the student, then explicitly separate and provide the detailed, step-by-step Correct Answer Key.
 
-For each generated exercise:
-- Include at least one question from underrepresented topics:
-  • counting
-  • conditional probability or Bayes
-- Do not ignore descriptive statistics: include them regularly across exercises.
+[COVERAGE & SYLLABUS DIRECTIVES]
+You must design the new variant to test the student comprehensively using a dynamic mix of the following core topics:
+1. Descriptive Statistics (mean, median, variance, boxplots)
+2. Fundamental Probability (events, disjoints, independence)
+3. Advanced Probability (Conditional Probability, Bayes' Theorem)
+4. Combinatorics (Permutations, Combinations, rules of counting)
 
-Change the context completely. Use LaTeX for math.`;
+URGENT PRIORITY RE-BALANCING: 
+The original exam heavily under-represented Combinatorics, Bayes' Theorem, and Conditional Probability. 
+Therefore, you MUST creatively embed at least one complex question from these three under-represented topics into your new variant. Be sure to seamlessly integrate Descriptive Statistics so it is not neglected.
+
+[FORMATTING RULES]
+- Completely reinvent the scenario, numbers, and context (do not just swap nouns).
+- Use proper LaTeX formatting for all mathematical notation (both block and inline).
+- Maintain an encouraging but academically rigorous tone in the solution key.`;
 
     const copyToClipboard = async (text) => {
         try {
