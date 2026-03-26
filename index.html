@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Statistiques - Fiches de Révision</title>
+    <title>Statistics - Revision</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 <body>
     <div class="app-container">
@@ -13,68 +15,198 @@
         <nav class="sidebar">
             <div class="sidebar-header">
                 <div class="glow-effect"></div>
-                <h1>STATISTIQUES</h1>
-                <p>Programme de Révision</p>
+                <h1>STATISTICS</h1>
+                <p>Revision Program</p>
             </div>
             <ul class="nav-links">
-                <li><a href="#" data-target="home" class="active">Accueil</a></li>
-                <li><a href="#" data-target="chap1">Chapitre 1 : Introduction</a></li>
-                <li><a href="#" data-target="chap2">Chapitre 2 : Probabilités</a></li>
-                <li><a href="#" data-target="chap3">Chapitre 3 : Tests d'Hypothèses</a></li>
-                <li><a href="#" data-target="chap4">Chapitre 4 : Régressions</a></li>
-                <li><a href="#" data-target="chatbot" class="ai-button">🤖 Assistant IA</a></li>
+                <li><a href="#" data-target="home" class="active">Home</a></li>
+                <li><a href="#" data-target="chap1">Chap 1: Descriptive Statistics</a></li>
+                <li><a href="#" data-target="chap2">Chap 2: Probability</a></li>
+                <li><a href="#" data-target="chap3">Chap 3: Hypothesis Testing</a></li>
+                <li><a href="#" data-target="chap4">Chap 4: Regressions</a></li>
+                <li><a href="#" data-target="chatbot" class="ai-button">🤖 AI Assistant</a></li>
             </ul>
         </nav>
 
         <!-- Main Content Area -->
         <main class="content-area">
             <div id="home" class="page active">
-                <h2>Bienvenue dans le module Statistiques</h2>
+                <h2>Welcome to Statistics Module</h2>
                 <div class="glass-panel">
-                    <p>Sélectionnez un chapitre dans le menu latéral pour commencer vos révisions.</p>
+                    <p>Select a chapter from the sidebar to start your revisions.</p>
                 </div>
             </div>
 
             <div id="chap1" class="page">
-                <h2>Chapitre 1 : Introduction</h2>
-                <div class="glass-panel">
-                    <p>Contenu à venir...</p>
+                <h2>Chapter 1: Descriptive Statistics</h2>
+                
+                <div class="glass-panel concept-block">
+                    <h3>📊 Percentiles / Quartiles</h3>
+                    <p class="definition"><strong>Definition:</strong> A value such that at least \\( p\\% \\) of observations are less than or equal to it and at least \\( (1-p)\\% \\) are greater than or equal to it.</p>
+                    <div class="method-box">
+                        <h4>Methodology</h4>
+                        <p>Position: \\( \\text{position} = p \\times n \\)</p>
+                        <ul>
+                            <li>If it's not an integer &rarr; take the <strong>next integer</strong>.</li>
+                            <li>If it's an integer &rarr; take the <strong>average</strong> of the positions \\( pn \\) and \\( pn+1 \\).</li>
+                        </ul>
+                    </div>
+                    <div class="formula-box">
+                        <h4>Key Quartiles</h4>
+                        <p>\\( Q1 \\) = 25%</p>
+                        <p>\\( Q2 \\) = Median (50%)</p>
+                        <p>\\( Q3 \\) = 75%</p>
+                    </div>
+                </div>
+
+                <div class="glass-panel concept-block">
+                    <h3>📊 Mean</h3>
+                    <p class="definition"><strong>Definition:</strong> The average value of the data.</p>
+                    <div class="formula-box">
+                        <p><span class="formula-inline">\\( \\bar{x} = \\frac{1}{n} \\sum x_i \\)</span></p>
+                    </div>
+                </div>
+
+                <div class="glass-panel concept-block">
+                    <h3>📊 Median & Mode</h3>
+                    <div class="split-box">
+                        <div class="sub-box">
+                            <h4>Median</h4>
+                            <p class="definition">The middle value of an ordered dataset.</p>
+                        </div>
+                        <div class="sub-box">
+                            <h4>Mode</h4>
+                            <p class="definition">The value that occurs most frequently.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-panel concept-block">
+                    <h3>📊 Variance & Standard Deviation</h3>
+                    <p class="definition"><strong>Variance (sample, unbiased):</strong> The average squared deviation from the mean, computed using \\( n-1 \\).</p>
+                    <p class="definition"><strong>Standard Deviation:</strong> The square root of the variance, measuring dispersion around the mean.</p>
+                    <div class="formula-box">
+                        <p><strong>Variance:</strong> <span class="formula-inline">\\( s^2 = \\frac{1}{n-1} \\sum (x_i - \\bar{x})^2 \\)</span></p>
+                        <p><strong>Standard Deviation:</strong> <span class="formula-inline">\\( s = \\sqrt{s^2} \\)</span></p>
+                    </div>
+                    <div class="method-box">
+                        <h4>Note</h4>
+                        <p>Always use \\( n-1 \\) for a sample to ensure the standard deviation is <strong>unbiased</strong>.</p>
+                    </div>
+                </div>
+
+                <div class="glass-panel concept-block">
+                    <h3>📊 Interquartile Range (IQR)</h3>
+                    <p class="definition"><strong>Definition:</strong> The difference between the third and first quartile (\\( Q3 - Q1 \\)), representing the spread of the middle 50% of the data.</p>
+                    <div class="formula-box">
+                        <p><span class="formula-inline">\\( IQR = Q3 - Q1 \\)</span></p>
+                    </div>
+                </div>
+
+                <div class="glass-panel concept-block">
+                    <h3>📊 Boxplot</h3>
+                    <p class="definition"><strong>Definition:</strong> A graphical summary based on the five-number summary: minimum, Q1, median, Q3, and maximum.</p>
+                    <div class="method-box">
+                        <ul>
+                            <li><strong>Whiskers:</strong> Values within bounds.</li>
+                            <li><strong>Outliers:</strong> Values outside the bounds.</li>
+                        </ul>
+                    </div>
+                    <div class="svg-container">
+                        <!-- FUTURISTIC SVG BOXPLOT diagram -->
+                        <svg viewBox="0 0 500 200" width="100%" height="200px">
+                            <!-- Whiskers visual bounds -->
+                            <line x1="180" y1="100" x2="100" y2="100" stroke="#38bdf8" stroke-width="2" stroke-dasharray="4" />
+                            <line x1="320" y1="100" x2="400" y2="100" stroke="#38bdf8" stroke-width="2" stroke-dasharray="4" />
+
+                            <line x1="100" y1="80" x2="100" y2="120" stroke="#38bdf8" stroke-width="2" />
+                            <line x1="400" y1="80" x2="400" y2="120" stroke="#38bdf8" stroke-width="2" />
+                            
+                            <!-- Box -->
+                            <rect x="180" y="60" width="140" height="80" fill="rgba(59, 130, 246, 0.2)" stroke="#3b82f6" stroke-width="2" />
+                            <!-- Median -->
+                            <line x1="250" y1="60" x2="250" y2="140" stroke="#38bdf8" stroke-width="3" />
+                            
+                            <text x="100" y="150" fill="#94a3b8" font-size="14" text-anchor="middle">Min</text>
+                            <text x="180" y="150" fill="#94a3b8" font-size="14" text-anchor="middle">Q1</text>
+                            <text x="250" y="160" fill="#f8fafc" font-size="14" text-anchor="middle" font-weight="bold">Median</text>
+                            <text x="320" y="150" fill="#94a3b8" font-size="14" text-anchor="middle">Q3</text>
+                            <text x="400" y="150" fill="#94a3b8" font-size="14" text-anchor="middle">Max</text>
+                            
+                            <!-- Outliers -->
+                            <circle cx="50" cy="100" r="4" fill="#3b82f6" />
+                            <circle cx="450" cy="100" r="4" fill="#3b82f6" />
+                            <text x="50" y="80" fill="#94a3b8" font-size="12" text-anchor="middle">Outlier</text>
+                            <text x="450" y="80" fill="#94a3b8" font-size="12" text-anchor="middle">Outlier</text>
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="glass-panel concept-block">
+                    <h3>📊 Outliers</h3>
+                    <p class="definition"><strong>Definition:</strong> An observation that lies far from the rest of the data.</p>
+                    <div class="split-box">
+                        <div class="sub-box">
+                            <h4>IQR Method</h4>
+                            <p>Data is considered an outlier if it falls outside the bounds:</p>
+                            <p class="formula-inline">\\( Q1 - 1.5 \\times IQR \\)</p>
+                            <br>
+                            <p class="formula-inline">\\( Q3 + 1.5 \\times IQR \\)</p>
+                        </div>
+                        <div class="sub-box">
+                            <h4>Z-Score Method</h4>
+                            <p><strong>Definition:</strong> A measure of how many standard deviations a value is from the mean.</p>
+                            <p class="formula-inline">\\( z = \\frac{x - \\bar{x}}{s} \\)</p>
+                            <p>Outlier if \\( |z| > 3 \\)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-panel concept-block">
+                    <h3>📊 Skewness</h3>
+                    <p class="definition"><strong>Definition:</strong> The asymmetry of a distribution.</p>
+                    <div class="method-box">
+                        <ul>
+                            <li>If Median is closer to Q1 &rarr; <strong>Right-skew</strong> (positive skew)</li>
+                            <li>If Median is closer to Q3 &rarr; <strong>Left-skew</strong> (negative skew)</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
 
             <div id="chap2" class="page">
-                <h2>Chapitre 2 : Probabilités</h2>
+                <h2>Chapter 2: Probability</h2>
                 <div class="glass-panel">
-                    <p>Contenu à venir...</p>
+                    <p>Coming soon...</p>
                 </div>
             </div>
 
             <div id="chap3" class="page">
-                <h2>Chapitre 3 : Tests d'Hypothèses</h2>
+                <h2>Chapter 3: Hypothesis Testing</h2>
                 <div class="glass-panel">
-                    <p>Contenu à venir...</p>
+                    <p>Coming soon...</p>
                 </div>
             </div>
 
             <div id="chap4" class="page">
-                <h2>Chapitre 4 : Régressions</h2>
+                <h2>Chapter 4: Regressions</h2>
                 <div class="glass-panel">
-                    <p>Contenu à venir...</p>
+                    <p>Coming soon...</p>
                 </div>
             </div>
 
             <div id="chatbot" class="page">
-                <h2>Assistant IA - Mode Statistiques</h2>
+                <h2>AI Assistant - Statistics Mode</h2>
                 <div class="glass-panel ai-panel">
                     <div class="chat-display">
-                        <div class="message ai-message">Bonjour ! Je suis votre assistant pour les cours de statistiques. Posez-moi vos questions.</div>
+                        <div class="message ai-message">Hello! I am your AI assistant for Statistics. How can I help you today?</div>
                         <!-- Chat messages will appear here -->
                     </div>
                     <div class="chat-input-area">
-                        <input type="text" placeholder="Posez une question sur les statistiques..." disabled>
-                        <button disabled>Envoyer</button>
+                        <input type="text" placeholder="Ask a question about statistics..." disabled>
+                        <button disabled>Send</button>
                     </div>
-                    <p class="beta-note">* L'IA sera connectée prochainement.</p>
+                    <p class="beta-note">* AI integration coming soon.</p>
                 </div>
             </div>
         </main>
