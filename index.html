@@ -21,7 +21,11 @@
             <ul class="nav-links">
                 <li><a href="#" data-target="chap1" class="active">Chap 1: Descriptive Stats</a></li>
                 <li><a href="#" data-target="chap2">Chap 2: Probability</a></li>
-                <li><a href="#" data-target="chatbot" class="ai-button">🤖 AI Assistant</a></li>
+                <li style="margin-top: 1rem;"><a href="#" data-target="prob1" style="font-weight: 700; color: var(--accent-primary);">📝 Problem 1 (T/F)</a></li>
+                <li><a href="#" data-target="prob2" style="font-weight: 700; color: var(--accent-primary);">📝 Problem 2 (Defs)</a></li>
+                <li><a href="#" data-target="prob3" style="font-weight: 700; color: var(--accent-primary);">📝 Problem 3 (Bayes)</a></li>
+                <li><a href="#" data-target="prob4" style="font-weight: 700; color: var(--accent-primary);">📝 Problem 4 (Combinatorics)</a></li>
+                <li><a href="#" data-target="prob5" style="font-weight: 700; color: var(--accent-primary);">📝 Problem 5 (Long Form)</a></li>
             </ul>
         </nav>
 
@@ -258,18 +262,173 @@
 
             </div>
 
-            <div id="chatbot" class="page">
-                <h2>AI Assistant - Statistics Mode</h2>
-                <div class="glass-panel ai-panel">
-                    <div class="chat-display">
-                        <div class="message ai-message">Hello! I am your AI assistant for Statistics. How can I help you today?</div>
-                        <!-- Chat messages will appear here -->
+            <div id="prob1" class="page">
+                <h2>Problem 1: True or False</h2>
+                <div class="split-box">
+                    <div class="sub-box problem-container" style="flex: 1.2;">
+                        <h4>Midterm Sample Test</h4>
+                        <div class="glass-panel" style="margin-top: 1rem; padding: 2rem;">
+                            <p><strong>[2 points]</strong> For each statement, indicate whether it is TRUE or FALSE. Each correct answer is worth 0.5 point.</p>
+                            <br>
+                            <p>(a) If A and B are independent events, \( P(A) = P(B) \), and \( P(A \cup B) = \frac{1}{2} \), then \( P(A) > \frac{1}{4} \).</p>
+                            <br>
+                            <p>(b) Let events A and B be disjoint. Then also \( A^c \) and \( B^c \) are disjoint.</p>
+                            <br>
+                            <p>(c) Data consisting of a spectrum of values, such as “completely agree”, “mostly agree”, “mostly disagree”, “completely disagree” when measuring opinion are not of ordinal scale.</p>
+                            <br>
+                            <p>(d) Mean and median are measures of location.</p>
+                        </div>
                     </div>
-                    <div class="chat-input-area">
-                        <input type="text" placeholder="Ask a question about statistics..." disabled>
-                        <button disabled>Send</button>
+                    <div class="sub-box ai-container" style="flex: 1.5; display: flex; flex-direction: column; background: transparent; border: none; box-shadow: none; padding: 0;">
+                        <h4>🤖 Expert AI Professor</h4>
+                        <div class="ai-controls" style="margin-top: 1rem;">
+                            <button class="ai-btn generate-btn">✨ Auto-Generate Variant</button>
+                            <button class="ai-btn correction-btn">✅ Show Correction</button>
+                        </div>
+                        <div class="glass-panel ai-panel" style="flex: 1; margin-bottom: 0; display: flex; flex-direction: column;">
+                            <div class="chat-display" style="flex: 1;">
+                                <div class="message ai-message">
+                                    <strong>Prof AI:</strong> Ready! Click "Auto-Generate Variant" to get a brand new exercise simulating exactly this True/False format with different statements covering syllabus blind-spots (like conditional probability). Or ask for the solution to the problem on the left!
+                                </div>
+                            </div>
+                            <div class="chat-input-area">
+                                <input type="text" placeholder="Request generation tweaks, or specify 'this is too easy'..." style="width: 100%;">
+                                <button>Send</button>
+                            </div>
+                        </div>
                     </div>
-                    <p class="beta-note">* AI integration coming soon.</p>
+                </div>
+            </div>
+
+            <div id="prob2" class="page">
+                <h2>Problem 2: Definitions</h2>
+                <div class="split-box">
+                    <div class="sub-box problem-container" style="flex: 1.2;">
+                        <h4>Midterm Sample Test</h4>
+                        <div class="glass-panel" style="margin-top: 1rem; padding: 2rem;">
+                            <p><strong>[4 points]</strong> State appropriate description or formulate definition for the following concepts, if helpful provide examples:</p>
+                            <br>
+                            <p>(a) Contingency table [1 points]</p>
+                            <p>(b) Inter-quartile range [1 points]</p>
+                            <p>(c) Total probability formula [2 points]</p>
+                        </div>
+                    </div>
+                    <div class="sub-box ai-container" style="flex: 1.5; display: flex; flex-direction: column; background: transparent; border: none; box-shadow: none; padding: 0;">
+                        <h4>🤖 Expert AI Professor</h4>
+                        <div class="ai-controls" style="margin-top: 1rem;">
+                            <button class="ai-btn generate-btn">✨ Auto-Generate Variant</button>
+                            <button class="ai-btn correction-btn">✅ Show Correction</button>
+                        </div>
+                        <div class="glass-panel ai-panel" style="flex: 1; margin-bottom: 0; display: flex; flex-direction: column;">
+                            <div class="chat-display" style="flex: 1;">
+                                <div class="message ai-message">
+                                    <strong>Prof AI:</strong> I can quiz you on any definitions from the syllabus. Tell me if you want me to prioritize a chapter!
+                                </div>
+                            </div>
+                            <div class="chat-input-area">
+                                <input type="text" placeholder="Request generation tweaks, or specify 'this is too easy'..." style="width: 100%;">
+                                <button>Send</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="prob3" class="page">
+                <h2>Problem 3: Bayes' Classification</h2>
+                <div class="split-box">
+                    <div class="sub-box problem-container" style="flex: 1.2;">
+                        <h4>Midterm Sample Test</h4>
+                        <div class="glass-panel" style="margin-top: 1rem; padding: 2rem;">
+                            <p><strong>[4 points]</strong> You are conducting a routine testing program for a rare genetic disorder in a population of newborns. The overall prevalence of the disorder is 1 in 2000 newborns. You use a blood test that is 90% sensitive and 98% specific. A newborn tests positive for the disorder. A concerned parent asks you: “What are the chances that my baby actually has the genetic disorder?”</p>
+                        </div>
+                    </div>
+                    <div class="sub-box ai-container" style="flex: 1.5; display: flex; flex-direction: column; background: transparent; border: none; box-shadow: none; padding: 0;">
+                        <h4>🤖 Expert AI Professor</h4>
+                        <div class="ai-controls" style="margin-top: 1rem;">
+                            <button class="ai-btn generate-btn">✨ Auto-Generate Variant</button>
+                            <button class="ai-btn correction-btn">✅ Show Correction</button>
+                        </div>
+                        <div class="glass-panel ai-panel" style="flex: 1; margin-bottom: 0; display: flex; flex-direction: column;">
+                            <div class="chat-display" style="flex: 1;">
+                                <div class="message ai-message">
+                                    <strong>Prof AI:</strong> Classic Bayes' Theorem scenario! Want to try a similar problem in a business or engineering context? Just click generate!
+                                </div>
+                            </div>
+                            <div class="chat-input-area">
+                                <input type="text" placeholder="Request generation tweaks, or specify 'this is too easy'..." style="width: 100%;">
+                                <button>Send</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="prob4" class="page">
+                <h2>Problem 4: Combinatorics</h2>
+                <div class="split-box">
+                    <div class="sub-box problem-container" style="flex: 1.2;">
+                        <h4>Midterm Sample Test</h4>
+                        <div class="glass-panel" style="margin-top: 1rem; padding: 2rem;">
+                            <p><strong>[5 points]</strong> Three rabbits are chosen (without replacement) from a hat containing two white rabbits. The probability that both white rabbits are chosen is equal to the probability that neither is chosen. How many rabbits are in the hat?</p>
+                        </div>
+                    </div>
+                    <div class="sub-box ai-container" style="flex: 1.5; display: flex; flex-direction: column; background: transparent; border: none; box-shadow: none; padding: 0;">
+                        <h4>🤖 Expert AI Professor</h4>
+                        <div class="ai-controls" style="margin-top: 1rem;">
+                            <button class="ai-btn generate-btn">✨ Auto-Generate Variant</button>
+                            <button class="ai-btn correction-btn">✅ Show correction</button>
+                        </div>
+                        <div class="glass-panel ai-panel" style="flex: 1; margin-bottom: 0; display: flex; flex-direction: column;">
+                            <div class="chat-display" style="flex: 1;">
+                                <div class="message ai-message">
+                                    <strong>Prof AI:</strong> This rabbit problem tests combinatorics and equations. If you want, I can generate a similar logic puzzle involving urns and marbles, or cards!
+                                </div>
+                            </div>
+                            <div class="chat-input-area">
+                                <input type="text" placeholder="Request generation tweaks, or specify 'this is too easy'..." style="width: 100%;">
+                                <button>Send</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="prob5" class="page">
+                <h2>Problem 5: Descriptive Stats Analysis</h2>
+                <div class="split-box">
+                    <div class="sub-box problem-container" style="flex: 1.2;">
+                        <h4>Midterm Sample Test</h4>
+                        <div class="glass-panel" style="margin-top: 1rem; padding: 2rem;">
+                            <p><strong>[5 points]</strong> In a study comparing the annual bonuses of software developers across different companies, the following data represent the annual bonuses, in thousands of dollars, for a sample of 21 developers:</p>
+                            <p style="font-family: monospace; text-align:center; padding: 1rem 0; font-size:1.1rem; color:var(--accent-primary);">9, 11, 11, 14, 10, 16, 12, 18, 15, 17, 14, 22, 8, 24, 21, 12, 14, 20, 15, 19, 13</p>
+                            <p>i) Compute the 15th, 25th, 66th and 75th percentiles of the bonuses for the sample of 21 developers.</p>
+                            <p style="margin-top: 0.5rem">ii) Construct a boxplot to visualize the distribution of bonuses. Comment on the skewness of the data.</p>
+                            <p style="margin-top: 0.5rem">iii) Calculate the mean annual bonus and the standard deviation.</p>
+                            <p style="margin-top: 0.5rem">iv) Identify potential outliers using both methods covered in class.</p>
+                            <br><p><em>To ease your computations, use the following quantities:</em></p>
+                            <p class="formula-inline">\( \sum_{i=1}^{21} x_i = 315 \)</p>
+                            <p class="formula-inline">\( \sum_{i=1}^{21} (x_i - \bar{x})^2 = 388 \)</p>
+                        </div>
+                    </div>
+                    <div class="sub-box ai-container" style="flex: 1.5; display: flex; flex-direction: column; background: transparent; border: none; box-shadow: none; padding: 0;">
+                        <h4>🤖 Expert AI Professor</h4>
+                        <div class="ai-controls" style="margin-top: 1rem;">
+                            <button class="ai-btn generate-btn">✨ Auto-Generate Variant</button>
+                            <button class="ai-btn correction-btn">✅ Show Correction</button>
+                        </div>
+                        <div class="glass-panel ai-panel" style="flex: 1; margin-bottom: 0; display: flex; flex-direction: column;">
+                            <div class="chat-display" style="flex: 1;">
+                                <div class="message ai-message">
+                                    <strong>Prof AI:</strong> Calculating percentiles from raw data is tedious but critical. If you auto-generate, I will provide a new dataset with pre-calculated sums of squares!
+                                </div>
+                            </div>
+                            <div class="chat-input-area">
+                                <input type="text" placeholder="Request generation tweaks, or ask for a hint..." style="width: 100%;">
+                                <button>Send</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>
