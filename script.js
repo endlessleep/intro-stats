@@ -54,19 +54,19 @@ Your STRICT objective is to generate ONE new variant of the exact same problem s
 1. Provide the newly generated problem FIRST (so the student can solve it).
 2. Then, provide the step-by-step CORRECT ANSWER KEY clearly separated below it.
 
-You MUST base your questions on the following topics:
-- descriptive statistics (mean, median, variance, boxplot)
-- probability (events, independence)
+Across multiple generated exercises, ensure balanced coverage of all topics:
+- descriptive statistics
+- probability
 - conditional probability and Bayes
-- counting (permutations, combinations)
-
-CRITICAL RULE: YOU HAVE TO COVER these subjects that were not well represented in the sample test:
 - counting
-- Bayes theorem
-- conditional probability
 
-You MUST prioritize these missing topics. Change the context completely.
-Use LaTeX for math.`;
+For each generated exercise:
+- Include at least one question from underrepresented topics:
+  • counting
+  • conditional probability or Bayes
+- Do not ignore descriptive statistics: include them regularly across exercises.
+
+Change the context completely. Use LaTeX for math.`;
 
     const copyToClipboard = async (text) => {
         try {
